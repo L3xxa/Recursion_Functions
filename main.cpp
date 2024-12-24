@@ -17,7 +17,7 @@ int main() {
     cout << "Enter a degree: ";
     cin >> D;
 
-    cout << degree(N, D) << endl;
+    cout << N << "^" << D << " = " << degree(N, D) << endl;
 
     return 0;
 }
