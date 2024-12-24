@@ -1,24 +1,56 @@
 #include <iostream>
+#include <ctime>
+#include <iomanip>
+
 using namespace std;
 
-int degree (int N, int D) {
-    if (D < 1) {
-        return 1;
+// Ініціалізація масиву випадковими числами
+void initialize(int *A, int n, int i = 0) {
+    if ( i == n) {
+        return;
     }
-    return N * degree(N, D - 1);
+    A[i] = rand() % 201 - 50;
+    cout << setw(4) << A[i] << " ";
+
+    if (i % 10 == 9) {
+        cout << endl;
+    }
+    initialize(A, n, i + 1);
+}
+// Згаходження мінімального значення суми 10 елементів масиву
+int Min(int *A, int n, int i = 0, int min = 0) {
+   if (i + 9 >= n) {
+       return min;
+   }
+
+    int sum = 0;
+    for (int j = 0; j < 10; j++) {
+        sum += A[i + j];
+    }
+
+    if (i == 0) {
+        min = sum;
+    }
+
+    if (sum < min) {
+        min = sum;
+    }
+
+    return Min(A, n, i + 1, min);
+
 }
 
 int main() {
+    srand(time(0));
 
-    int N;
-    cout << "Enter a digit: ";
-    cin >> N;
-    int D;
-    cout << "Enter a degree: ";
-    cin >> D;
+    int *A = new int [100];
+    int n = 100;
 
-    cout << degree(N, D) << endl;
+    initialize(A, n);// Ініціалізація масиву випадковими числами
 
+    Min(A, n); // Знаходження мінімального значення суми 10 елементів масиву
+    cout << "Min sum of 10 elements: " << Min(A, n) << endl;
 
+    delete[] A;
     return 0;
 }
