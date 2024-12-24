@@ -1,24 +1,33 @@
 #include <iostream>
 using namespace std;
 
-int degree (int N, int D) {
-    if (D < 1) {
-        return 1;
+int Sum(int A, int B) {
+    if (A == B) {
+        cout << A;
+        return A;
     }
-    return N * degree(N, D - 1);
+    cout << A << " + ";
+
+    return A + Sum(A + 1, B);
 }
 
 int main() {
+    int A;
+    cout << "Enter a first digit: ";
+    cin >> A;
 
-    int N;
-    cout << "Enter a digit: ";
-    cin >> N;
-    int D;
-    cout << "Enter a degree: ";
-    cin >> D;
+    int B;
+    cout << "Enter a second digit: ";
+    cin >> B;
 
-    cout << degree(N, D) << endl;
+    if (A >= B) {
+        cout << "Invalid! A must be less than B." << endl;
+        return 1;
+    }
 
+    cout << "Sum: ";
+    int result = Sum(A, B);
+    cout << " = " << result << endl;
 
     return 0;
 }
