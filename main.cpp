@@ -19,6 +19,5 @@ int main() {
 
     cout << degree(N, D) << endl;
 
-
     return 0;
 }
