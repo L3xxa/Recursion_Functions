@@ -1,24 +1,21 @@
 #include <iostream>
 using namespace std;
 
-int degree (int N, int D) {
-    if (D < 1) {
-        return 1;
+void print (int N) {
+    if (N < 1) {
+        return;
     }
-    return N * degree(N, D - 1);
+    cout << "* ";
+    print(N - 1);
 }
 
 int main() {
-
     int N;
     cout << "Enter a digit: ";
     cin >> N;
-    int D;
-    cout << "Enter a degree: ";
-    cin >> D;
 
-    cout << degree(N, D) << endl;
-
+    print(N);
+    cout << endl;
 
     return 0;
 }
